@@ -24,7 +24,7 @@ class TransaksiPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Card Info Makanan Terpilih
+          
             Card(
               elevation: 2,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -74,7 +74,7 @@ class TransaksiPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Card Input Jumlah Makanan
+          
             Card(
               elevation: 2,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -126,14 +126,12 @@ class TransaksiPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Tombol Bayar menggunakan Reusable PrimaryButton
             PrimaryButton(
               text: "Bayar",
               onPressed: controller.prosesBayar,
             ),
             const SizedBox(height: 20),
 
-            // Hasil Perhitungan (Subtotal, PPN 5%, Total Bayar) di layar menggunakan Reusable Component
             Obx(() {
               if (!controller.sudahHitung.value) {
                 return const SizedBox.shrink();

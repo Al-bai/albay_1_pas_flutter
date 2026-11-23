@@ -11,7 +11,7 @@ class LoginController extends GetxController {
   var isLoading = false.obs;
   var loginModel = Rxn<LoginModel>();
 
-  // method hit API
+
   void login() async {
     if (txtUsername.text.isEmpty || txtPassword.text.isEmpty) {
       Get.snackbar("error", "username dan password harus terisi");

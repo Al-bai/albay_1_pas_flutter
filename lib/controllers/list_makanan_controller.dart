@@ -2,7 +2,7 @@ import 'package:albay_1_pas_flutter/models/makanan_model.dart';
 import 'package:get/get.dart';
 
 class ListMakananController extends GetxController {
-  // data makanan berupa List, masih hardcoded
+
 
   List<MakananModel> dataMakanan = [
     MakananModel(

@@ -5,11 +5,11 @@ import 'package:albay_1_pas_flutter/models/makanan_model.dart';
 class TransaksiController extends GetxController {
   late MakananModel makanan;
 
-  // Controller input jumlah makanan
+  
   final TextEditingController txtJumlah = TextEditingController(text: "1");
   final RxInt jumlah = 1.obs;
 
-  // Variabel reactive untuk hasil perhitungan transaksi
+  
   final RxDouble subtotal = 0.0.obs;
   final RxDouble ppn = 0.0.obs;
   final RxDouble totalBayar = 0.0.obs;
@@ -18,17 +18,17 @@ class TransaksiController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Menerima data makanan yang dikirim lewat Get.arguments
+   
     makanan = Get.arguments as MakananModel;
   }
 
-  /// Helper untuk mengambil angka murni dari string harga (misal "25.000" -> 25000.0)
+  
   double parseHarga(String hargaStr) {
     String clean = hargaStr.replaceAll(RegExp(r'[^0-9]'), '');
     return double.tryParse(clean) ?? 0.0;
   }
 
-  /// Helper untuk format ke Rupiah (misal 25000 -> "Rp 25.000")
+  
   String formatRupiah(num number) {
     int intVal = number.round();
     String str = intVal.toString();
@@ -39,7 +39,7 @@ class TransaksiController extends GetxController {
     return 'Rp $formatted';
   }
 
-  /// Menambah jumlah makanan (+1)
+  
   void tambahJumlah() {
     jumlah.value++;
     txtJumlah.text = jumlah.value.toString();
@@ -48,7 +48,7 @@ class TransaksiController extends GetxController {
     }
   }
 
-  /// Mengurangi jumlah makanan (-1, minimal 1)
+  
   void kurangJumlah() {
     if (jumlah.value > 1) {
       jumlah.value--;
@@ -59,7 +59,7 @@ class TransaksiController extends GetxController {
     }
   }
 
-  /// Ketika nilai input jumlah diubah langsung di TextField
+  
   void onJumlahChanged(String val) {
     int? parsed = int.tryParse(val);
     if (parsed != null && parsed > 0) {
@@ -70,10 +70,7 @@ class TransaksiController extends GetxController {
     }
   }
 
-  /// Rumus Perhitungan Transaksi:
-  /// Subtotal = Harga Makanan × Jumlah Makanan
-  /// PPN (5%) = Subtotal × 0.05
-  /// Total Bayar = Subtotal + PPN (5%)
+ 
   void hitung() {
     int qty = int.tryParse(txtJumlah.text) ?? jumlah.value;
     if (qty <= 0) qty = 1;
@@ -85,7 +82,7 @@ class TransaksiController extends GetxController {
     sudahHitung.value = true;
   }
 
-  /// Aksi ketika tombol Bayar ditekan
+ 
   void prosesBayar() {
     int? qty = int.tryParse(txtJumlah.text);
     if (qty == null || qty <= 0) {
@@ -102,11 +99,11 @@ class TransaksiController extends GetxController {
     jumlah.value = qty;
     hitung();
 
-    // Tampilkan dialog konfirmasi pembayaran
+    
     tampilkanDialogKonfirmasi();
   }
 
-  /// Dialog konfirmasi menampilkan rincian perhitungan
+ 
   void tampilkanDialogKonfirmasi() {
     Get.defaultDialog(
       title: "Konfirmasi Pembelian",

@@ -8,11 +8,11 @@ class DetailMakananController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Menerima data makanan yang dikirim lewat Get.arguments
+  
     makanan = Get.arguments as MakananModel;
   }
 
-  /// Pindah ke Halaman Transaksi Pembelian via Routes
+ 
   void goToTransaksi() {
     Get.toNamed(Routes.transaksi, arguments: makanan);
   }
